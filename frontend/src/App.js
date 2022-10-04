@@ -1,28 +1,23 @@
-import { Client } from "twitter-api-sdk";
-import { BEARER_TOKEN } from "./const/const";
-import logo from "./logo.svg";
 import "./App.css";
+import { React, useEffect, useState } from "react";
+import {TweetsApi} from "./api/tweetsApi"
 
 function App() {
-  async function main() {
-    const client = new Client(BEARER_TOKEN);
+  // const [tweets, setTweets] = useState()
 
-    const response = await client.tweets.tweetsRecentSearch({
-      query: "#нюдсочетверг has:images",
-      max_results: 10,
-      expansions: ["attachments.media_keys"],
-      "media.fields": ["url"],
-    });
-
-    console.log("response", JSON.stringify(response, null, 2));
-  }
-
-  main();
+  // TweetsApi.getTweets()
+  //   .then((res) => {
+  //     setTweets(res)
+  //     console.log(res)
+  //   })
+  //   .catch((err) => {
+  //     console.log(err)
+  //   })
 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
