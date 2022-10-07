@@ -1,6 +1,6 @@
 import "./App.css";
 import { React, useEffect, useState } from "react";
-import {TweetsApi} from "./api/tweetsApi"
+import { TweetsApi } from "../../api/tweetsApi";
 
 function App() {
   // const [tweets, setTweets] = useState()
@@ -16,19 +16,8 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="Header">
+
       </header>
     </div>
   );
