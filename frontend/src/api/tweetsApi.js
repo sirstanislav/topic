@@ -4,11 +4,15 @@ class Api {
     this._headers = headers;
   }
 
-  getTweets() {
+  getTweets(headerLink) {
     return fetch(`${this._baseUrl}/`, {
+      method: "POST",
       headers: {
         ...this._headers,
       },
+      body: JSON.stringify({
+        headerLink,
+      }),
     }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
   }
 }
