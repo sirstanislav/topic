@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { twitterRequest } = require("../api/twitterApi");
 
-router.get("/", twitterRequest);
+router.post("/", twitterRequest);
 
 module.exports = router;
