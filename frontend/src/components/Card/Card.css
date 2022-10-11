@@ -1,0 +1,13 @@
+.card {
+  padding: 1%;
+}
+
+.card__image {
+  width: 100%;
+
+  object-fit: cover;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+
+  display: block;
+}
