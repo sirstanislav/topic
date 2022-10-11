@@ -5,14 +5,13 @@ import { linkContext } from "../../utils/LinkContext";
 import Card from "../Card/Card";
 import "./Cards.css";
 
-export default function Cards() {
+export default function Cards({ onCardClick }) {
   const [tweetsMedia, setTweetsMedia] = useState([]);
   const headerLink = React.useContext(linkContext);
 
   useEffect(() => {
     TweetsApi.getTweets(headerLink)
       .then((res) => {
-        console.log("res:", res)
         setTweetsMedia(res.includes.media);
       })
       .catch((err) => {
@@ -20,12 +19,10 @@ export default function Cards() {
       });
   }, [headerLink]);
 
-  console.log("quanto:", tweetsMedia);
-
   return (
     <section className="cards">
       {tweetsMedia.map((card, i) => (
-        <Card key={i} card={card} />
+        <Card key={i} card={card} onCardClick={onCardClick} />
       ))}
     </section>
   );
