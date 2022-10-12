@@ -22,7 +22,6 @@ function App() {
   }
 
   function handleClosePopup(e) {
-    console.log("event:", e)
     setSelectedCard({ isOpen: false });
   }
 

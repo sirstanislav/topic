@@ -3,7 +3,6 @@ import "./ImagePopup.css";
 import React from "react";
 
 export default function ImagePopup({ card, onClose }) {
-  console.log("card:", card);
   return (
     <section
       className={`popup ${card.isOpen && "popup_enable"}`}

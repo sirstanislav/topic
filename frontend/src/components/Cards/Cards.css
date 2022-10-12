@@ -1,4 +1,4 @@
 .cards {
   columns: 300px auto;
-  column-gap: 0;
+  column-gap: 0px;
 }

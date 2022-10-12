@@ -31,6 +31,8 @@
 .popup__image-full {
   max-width: 75vw;
   max-height: 75vh;
+
+  border-radius: 5px;
 }
 
 .popup__image-title {

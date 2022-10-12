@@ -6,13 +6,13 @@ import Card from "../Card/Card";
 import "./Cards.css";
 
 export default function Cards({ onCardClick }) {
-  const [tweetsMedia, setTweetsMedia] = useState([]);
+  const [imageUrl, setImageUrl] = useState([]);
   const headerLink = React.useContext(linkContext);
 
   useEffect(() => {
     TweetsApi.getTweets(headerLink)
       .then((res) => {
-        setTweetsMedia(res.includes.media);
+        setImageUrl(res.includes.media);
       })
       .catch((err) => {
         console.log(err);
@@ -21,7 +21,7 @@ export default function Cards({ onCardClick }) {
 
   return (
     <section className="cards">
-      {tweetsMedia.map((card, i) => (
+      {imageUrl.map((card, i) => (
         <Card key={i} card={card} onCardClick={onCardClick} />
       ))}
     </section>
