@@ -1,5 +1,18 @@
 .footer {
-  padding: 5vh 0 2vh 0;
+  display: flex;
 
+  padding: 5vh 0 2vh 0;
   margin: auto 0 0;
+}
+
+.footer__twitter {
+  color: blue;
+  text-decoration: none;
+
+  margin: 0;
+}
+
+.footer__about {
+  margin: 0;
+  margin-left: auto;
 }

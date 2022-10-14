@@ -70,3 +70,11 @@
   -webkit-background-clip: text;
   color: transparent;
 }
+
+.header__link:first-of-type {
+  margin-left: 0;
+}
+
+.header__link:last-of-type {
+  margin-right: 0;
+}

@@ -22,7 +22,7 @@ export default function Cards({ onCardClick }) {
   return (
     <section className="cards">
       {imageUrl.map((card, i) => (
-        <Card key={i} card={card} onCardClick={onCardClick} />
+        <Card key={i} card={card} onCardClick={onCardClick} index={i}/>
       ))}
     </section>
   );

@@ -12,11 +12,13 @@
 
 .App {
   height: auto;
-  width: 100%;
+  width: 95%;
 
   display: flex;
   flex-direction: column;
 
   text-align: center;
   background-color: #f7f9fb;
+
+  margin: auto;
 }
