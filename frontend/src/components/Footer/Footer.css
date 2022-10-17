@@ -6,13 +6,16 @@
 }
 
 .footer__twitter {
+  font-weight: 600;
   color: blue;
   text-decoration: none;
+  text-transform: uppercase;
 
   margin: 0;
 }
 
 .footer__about {
+  font-weight: 600;
   margin: 0;
   margin-left: auto;
 }
