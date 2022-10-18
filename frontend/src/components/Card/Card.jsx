@@ -1,9 +1,8 @@
 import React from "react";
 import "./Card.css";
 
-export default function Card({ card, onCardClick, index, authorId }) {
-
-  console.log("card", card)
+export default function Card({ card, onCardClick, index, tweetInfo }) {
+  // console.log("tweetInfo", tweetInfo);
 
   function handleClick() {
     onCardClick(card);
@@ -20,6 +19,7 @@ export default function Card({ card, onCardClick, index, authorId }) {
         alt="card"
         onClick={handleClick}
       />
+      <p>haha</p>
     </div>
   );
 }
