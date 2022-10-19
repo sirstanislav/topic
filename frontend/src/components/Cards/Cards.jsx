@@ -6,46 +6,39 @@ import Card from "../Card/Card";
 import "./Cards.css";
 
 export default function Cards({ onCardClick }) {
-  const [imageUrl, setImageUrl] = useState([]);
-  const [tweetInfo, setTweetInfo] = useState([]);
+  const [tweet, setTweet] = useState([]);
   const headerLink = React.useContext(linkContext);
 
   useEffect(() => {
     TweetsApi.getTweets(headerLink)
       .then((res) => {
-        console.log("RES:", res);
-        setImageUrl(res.includes.media);
-
+        console.log(res)
         const mediaAndTweetId = res.data.map((data) => {
+          const mediaKeys = {};
+          for (let i = 0; i < data.attachments.media_keys.length; i++) {
+            mediaKeys[i] = data.attachments.media_keys[i];
+          }
           return {
-            media: data.attachments,
+            ...mediaKeys,
             tweetId: data.id,
           };
         });
 
-        const authorIdAndUserName = res.includes.users.map((user) => {
-          return { authorId: user.id, username: user.username };
+        const userName = mediaAndTweetId.map((el, i) => {
+          return { ...el, ...res.includes.users[i] };
         });
 
-        const joinAll = mediaAndTweetId.map((e, i) => {
-          return [e, authorIdAndUserName[i]];
-        });
-
-        const tweetInfo = joinAll.map((item) => {
-          console.log("item", item);
+        const tweetInfo = res.includes.media.map((item) => {
           return {
-            media: item[0].media,
-            tweetId: item[0].tweetId,
-            username: item[1].username,
-            authorId: item[1].authorId,
+            ...userName.filter((el) =>
+              Object.values(el).some((media) => {
+                return media === item.media_key;
+              })
+            ),
+            ...item,
           };
         });
-        setTweetInfo(tweetInfo);
-
-        // console.log("mediaAndTweetId:", mediaAndTweetId);
-        // console.log("authorIdAndUserName:", authorIdAndUserName);
-        // console.log("joinAll:", joinAll);
-        console.log("tweetInfo:", tweetInfo);
+        setTweet(tweetInfo);
       })
       .catch((err) => {
         console.log(err);
@@ -54,13 +47,12 @@ export default function Cards({ onCardClick }) {
 
   return (
     <section className="cards">
-      {imageUrl.map((card, i) => (
+      {tweet.map((card, i) => (
         <Card
           key={i}
           card={card}
           onCardClick={onCardClick}
           index={i}
-          tweetInfo={tweetInfo}
         />
       ))}
     </section>
