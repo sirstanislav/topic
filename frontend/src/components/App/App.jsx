@@ -1,9 +1,9 @@
 import "./App.css";
-import { React, useEffect, useState } from "react";
+import { React, useState } from "react";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import ImagePopup from "../ImagePopup/ImagePopup"
+import ImagePopup from "../ImagePopup/ImagePopup";
 import { linkContext } from "../../utils/LinkContext";
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
     });
   }
 
-  function handleClosePopup(e) {
+  function handleClosePopup() {
     setSelectedCard({ isOpen: false });
   }
 
@@ -32,7 +32,7 @@ function App() {
         <Main onCardClick={handleCardClick} />
         <Footer />
       </linkContext.Provider>
-      <ImagePopup card={selectedCard} onClose={handleClosePopup}/>
+      <ImagePopup card={selectedCard} onClose={handleClosePopup} />
     </div>
   );
 }

@@ -7,7 +7,7 @@
 
 .footer__twitter {
   font-weight: 600;
-  color: blue;
+  color: #1DA1F2;
   text-decoration: none;
   text-transform: uppercase;
 
@@ -16,6 +16,7 @@
 
 .footer__about {
   font-weight: 600;
+  color: #1DA1F2;
   margin: 0;
   margin-left: auto;
 }

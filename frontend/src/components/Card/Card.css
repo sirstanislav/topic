@@ -1,5 +1,5 @@
 .card {
-  padding: 5px;
+  padding: 10px;
 }
 
 .card__image {
@@ -10,4 +10,14 @@
   border-radius: 5px;
 
   display: block;
+}
+
+.card__title {
+  margin: 1vh 0 1vh 0;
+  color: #1da1f2;
+}
+
+.card__url {
+  text-decoration: none;
+  text-transform: uppercase;
 }

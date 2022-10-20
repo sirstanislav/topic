@@ -36,10 +36,10 @@
 }
 
 .popup__image-title {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 15px;
-  font-weight: 400;
-  color: #ffffff;
+  font-weight: 600;
+  color: #1da1f2;
 
   margin: 10px 0 0 0;
 }

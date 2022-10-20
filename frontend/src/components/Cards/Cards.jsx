@@ -10,9 +10,9 @@ export default function Cards({ onCardClick }) {
   const headerLink = React.useContext(linkContext);
 
   useEffect(() => {
-    TweetsApi.getTweets(headerLink)
+    TweetsApi.getTweets(headerLink ? headerLink : "#sitnikfriday")
       .then((res) => {
-        console.log(res)
+        console.log("RES", res);
         const mediaAndTweetId = res.data.map((data) => {
           const mediaKeys = {};
           for (let i = 0; i < data.attachments.media_keys.length; i++) {
@@ -48,12 +48,7 @@ export default function Cards({ onCardClick }) {
   return (
     <section className="cards">
       {tweet.map((card, i) => (
-        <Card
-          key={i}
-          card={card}
-          onCardClick={onCardClick}
-          index={i}
-        />
+        <Card key={i} card={card} onCardClick={onCardClick} index={i} />
       ))}
     </section>
   );
