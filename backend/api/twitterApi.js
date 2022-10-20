@@ -16,7 +16,7 @@ module.exports.twitterRequest = async (req, res, next) => {
         "author_id",
       ],
       "user.fields": ["name", "pinned_tweet_id", "url", "username"],
-      "media.fields": ["alt_text", "preview_image_url", "url"],
+      "media.fields": ["alt_text", "preview_image_url", "url", "variants"],
     })
     .then((data) => {
       res.status(200).send(data);
