@@ -8,7 +8,7 @@ export default function Card({ card, onCardClick, index }) {
     onCardClick(card);
   }
 
-  const url = `https://twitter.com/${card[0].username}/status/${card[0].tweetId}`;
+  // const url = `https://twitter.com/${card[0].username}/status/${card[0].tweetId}`;
 
   return (
     <div

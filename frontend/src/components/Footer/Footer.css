@@ -1,22 +1,15 @@
 .footer {
   display: flex;
+  justify-content: space-between;
 
   padding: 5vh 0 2vh 0;
   margin: auto 0 0;
 }
 
-.footer__twitter {
-  font-weight: 600;
-  color: #1DA1F2;
-  text-decoration: none;
-  text-transform: uppercase;
-
-  margin: 0;
-}
-
 .footer__about {
   font-weight: 600;
   color: #1DA1F2;
+  text-decoration: none;
+
   margin: 0;
-  margin-left: auto;
 }

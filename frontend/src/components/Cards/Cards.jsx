@@ -15,13 +15,24 @@ export default function Cards({ onCardClick }) {
         console.log("RES", res);
         const mediaAndTweetId = res.data.map((data) => {
           const mediaKeys = {};
-          for (let i = 0; i < data.attachments.media_keys.length; i++) {
-            mediaKeys[i] = data.attachments.media_keys[i];
+          if (data.attachments) {
+            // very rare the attachments don't coming from API
+            for (let i = 0; i < data.attachments.media_keys.length; i++) {
+              mediaKeys[i] = data.attachments.media_keys[i];
+            }
+            return {
+              ...mediaKeys,
+              tweetId: data.id,
+            };
+          } else {
+            for (let i = 0; i < data.entities.urls.length; i++) {
+              mediaKeys[i] = data.entities.urls[i];
+            }
+            return {
+              ...mediaKeys,
+              tweetId: data.id,
+            };
           }
-          return {
-            ...mediaKeys,
-            tweetId: data.id,
-          };
         });
 
         const userName = mediaAndTweetId.map((el, i) => {

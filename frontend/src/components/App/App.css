@@ -11,7 +11,7 @@
 }
 
 .App {
-  height: auto;
+  height: 100vh;
   width: 95%;
 
   display: flex;

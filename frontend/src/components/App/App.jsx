@@ -1,8 +1,9 @@
 import "./App.css";
 import { React, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
+import About from "../About/About";
 import Footer from "../Footer/Footer";
 import ImagePopup from "../ImagePopup/ImagePopup";
 import { linkContext } from "../../utils/LinkContext";
@@ -10,8 +11,10 @@ import { linkContext } from "../../utils/LinkContext";
 function App() {
   const [link, setLink] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+  const history = useNavigate()
 
   function headerLink(e) {
+    history("/");
     setLink(e.target.innerHTML);
   }
 
@@ -36,6 +39,16 @@ function App() {
               <>
                 <Header headerLink={headerLink} />
                 <Main onCardClick={handleCardClick} />
+                <Footer />
+              </>
+            }
+          ></Route>
+          <Route
+            path="about"
+            element={
+              <>
+                <Header headerLink={headerLink} />
+                <About />
                 <Footer />
               </>
             }
