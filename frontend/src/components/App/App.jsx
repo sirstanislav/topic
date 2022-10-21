@@ -1,5 +1,6 @@
 import "./App.css";
 import { React, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -28,9 +29,18 @@ function App() {
   return (
     <div className="App">
       <linkContext.Provider value={link}>
-        <Header headerLink={headerLink} />
-        <Main onCardClick={handleCardClick} />
-        <Footer />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Header headerLink={headerLink} />
+                <Main onCardClick={handleCardClick} />
+                <Footer />
+              </>
+            }
+          ></Route>
+        </Routes>
       </linkContext.Provider>
       <ImagePopup card={selectedCard} onClose={handleClosePopup} />
     </div>
