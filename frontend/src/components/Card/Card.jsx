@@ -2,7 +2,6 @@ import React from "react";
 import "./Card.css";
 
 export default function Card({ card, onCardClick, index }) {
-  console.log("card", card);
 
   function handleClick() {
     onCardClick(card);

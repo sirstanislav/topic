@@ -6,38 +6,16 @@
 
 .header__links {
   display: flex;
-}
+  justify-content: space-between;
 
-.header__link:hover::before {
-  content: "";
-  position: absolute;
-  top: 100%;
-  width: 100%;
-  left: 0;
-  height: 2px;
-  border-radius: 2px;
-  background: linear-gradient(
-    219deg,
-    var(--color-1) 19%,
-    transparent 19%,
-    transparent 20%,
-    var(--color-2) 20%,
-    var(--color-2) 39%,
-    transparent 39%,
-    transparent 40%,
-    var(--color-3) 40%,
-    var(--color-3) 59%,
-    transparent 59%,
-    transparent 60%,
-    var(--color-4) 60%,
-    var(--color-4) 79%,
-    transparent 79%,
-    transparent 80%,
-    var(--color-5) 80%
-  );
+  margin: 0;
 }
 
 .header__link {
+  margin: 0;
+}
+
+.header__link-title {
   position: relative;
   font-family: "Exo", sans-serif;
   font-size: 2vw;
@@ -45,7 +23,7 @@
   width: -webkit-min-content;
   width: -moz-min-content;
   width: min-content;
-  margin: auto;
+  margin: 0;
   text-transform: uppercase;
   background: linear-gradient(
     219deg,
@@ -71,10 +49,27 @@
   color: transparent;
 }
 
-.header__link:first-of-type {
-  margin-left: 0;
-}
-
-.header__link:last-of-type {
-  margin-right: 0;
+.header__link-subline {
+  display: none;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(
+    219deg,
+    var(--color-1) 19%,
+    transparent 19%,
+    transparent 20%,
+    var(--color-2) 20%,
+    var(--color-2) 39%,
+    transparent 39%,
+    transparent 40%,
+    var(--color-3) 40%,
+    var(--color-3) 59%,
+    transparent 59%,
+    transparent 60%,
+    var(--color-4) 60%,
+    var(--color-4) 79%,
+    transparent 79%,
+    transparent 80%,
+    var(--color-5) 80%
+  );
 }

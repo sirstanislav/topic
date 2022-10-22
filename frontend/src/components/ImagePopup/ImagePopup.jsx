@@ -11,27 +11,26 @@ export default function ImagePopup({ card, onClose }) {
     setUserName(card);
   }, [card]);
 
-  console.log("card", card);
-  console.log("userName", userName);
-
   const url = `https://twitter.com/${
     userName.isOpen ? userName[0].username : null
   }/status/${userName.isOpen ? userName[0].tweetId : null}`;
+
   return (
     <section
       className={`popup ${card.isOpen && "popup_enable"}`}
       onClick={onClose}
     >
       <div className="popup__image">
-        {card.url ? (
+        {console.log(card)}
+        {card.type === "photo" ? (
           <img className="popup__image-full" src={card.url} alt="" />
         ) : (
           <video
             controls
             className="popup__image-full"
-            autoPlay
+            // autoPlay
             muted
-            loop
+            // loop
             src={card.isOpen ? card.variants[3].url : null}
             alt=""
           />
