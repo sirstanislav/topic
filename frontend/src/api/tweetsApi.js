@@ -18,7 +18,7 @@ class Api {
 }
 
 export const TweetsApi = new Api({
-  baseUrl: "http://localhost:3003",
+  baseUrl: "https://topicc-api.netlify.app",
   headers: {
     "Content-Type": "application/json",
   },
