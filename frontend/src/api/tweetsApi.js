@@ -18,7 +18,7 @@ class Api {
 }
 
 export const TweetsApi = new Api({
-  baseUrl: "https://topicc-api.netlify.app",
+  baseUrl: "https://topicc-api.herokuapp.com",
   // baseUrl: "http://localhost:3003",
   headers: {
     "Content-Type": "application/json",
