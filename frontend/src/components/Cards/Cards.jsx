@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { TweetsApi } from "../../api/TweetsApi";
+import { TweetsApi } from "../../api/tweetsApi";
 import { linkContext } from "../../utils/LinkContext";
 import Card from "../Card/Card";
 import "./Cards.css";
