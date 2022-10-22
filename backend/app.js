@@ -3,7 +3,6 @@ const express = require("express");
 const helmet = require("helmet");
 const app = express();
 // const { PORT } = process.env;
-const PORT = 3001
 const bodyParser = require("body-parser");
 const cors = require("./middlewares/cors");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
@@ -19,4 +18,4 @@ app.use("/", require("./routes/tweets"));
 
 app.use(errorLogger); // errorLogger подключают после обработчиков роутов и до обработчиков ошибок
 
-app.listen(PORT, () => {});
+app.listen(PORT = 3003, () => {});
