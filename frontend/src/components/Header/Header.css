@@ -1,7 +1,8 @@
 .header {
+  width: 95vw;
   padding: 5vh 0 5vh 0;
 
-  margin: 0;
+  margin: 0 auto;
 }
 
 .header__links {
@@ -47,6 +48,7 @@
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+  cursor: pointer;
 }
 
 .header__link-subline {
@@ -72,4 +74,26 @@
     transparent 80%,
     var(--color-5) 80%
   );
+}
+
+@media screen and (max-width: 500px) {
+  .header {
+    padding: 2vh 0 2vh 0;
+  }
+
+  .header__links {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    row-gap: 20px;
+  }
+
+  .header__link {
+    text-align: center;
+  }
+
+  .header__link-title {
+    font-size: 7vw;
+    margin: 0;
+  }
 }

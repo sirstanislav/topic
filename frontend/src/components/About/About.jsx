@@ -1,11 +1,11 @@
 import "./About.css";
 import React from "react";
 
-export default function About() {
+export default function About({ darkTheme }) {
   return (
     <section className="about">
       <div className="about__logo"></div>
-      <p className="about__info">
+      <p className={`about__info ${darkTheme && "about__info_dark"}`}>
         Topic был сделан, чтоб собрать вместе популярные хештеги. А так же для
         популяризаций нюдсов. <br></br> <br></br>{" "}
         <a
@@ -14,9 +14,9 @@ export default function About() {
           target="_blank"
           rel="noreferrer"
         >
-          Ссылка
+          Гайд
         </a>{" "}
-        для парней где рассказывают как хорошо сделать красивое ню фото.
+        для парней, как сделать красивое ню фото.
         <br></br> <br></br>В планах сделать темную тему. Показывать кол-во
         лайков, если запросы к API твиттера не будут превышать лимита. Исправить
         недочеты.<br></br> <br></br>Обратная связь{" "}

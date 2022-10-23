@@ -35,6 +35,14 @@
   border-radius: 5px;
 }
 
+.popup__url {
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+
+  cursor: pointer;
+}
+
 .popup__image-title {
   font-size: 14px;
   line-height: 15px;
@@ -72,12 +80,22 @@
   -o-transition: opacity 0.3s linear;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 500px) {
   .popup__close {
     width: 20px;
     height: 20px;
 
     top: -36px;
     right: 0px;
+  }
+
+  .popup__image {
+    max-width: 90vw;
+    max-height: 90vh;
+  }
+  
+  .popup__image-full {
+    max-width: 90vw;
+    max-height: 90vh;
   }
 }

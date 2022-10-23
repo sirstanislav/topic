@@ -7,11 +7,21 @@ import About from "../About/About";
 import Footer from "../Footer/Footer";
 import ImagePopup from "../ImagePopup/ImagePopup";
 import { linkContext } from "../../utils/LinkContext";
+import { useEffect } from "react";
 
 function App() {
   const [link, setLink] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  const history = useNavigate()
+  const [darkTheme, setDarkTheme] = useState(false);
+  const history = useNavigate();
+
+  useEffect(() => {
+    const local = localStorage.getItem("darkTheme");
+    if (local === "true") {
+      return setDarkTheme(true);
+    }
+    return setDarkTheme(false);
+  }, []);
 
   function headerLink(e) {
     history("/");
@@ -29,8 +39,16 @@ function App() {
     setSelectedCard({ isOpen: false });
   }
 
+  function handleDarkTheme() {
+    setDarkTheme(!darkTheme);
+    localStorage.setItem("darkTheme", !darkTheme);
+  }
+
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{ backgroundColor: darkTheme ? "#212124" : "#f7f9fb" }}
+    >
       <linkContext.Provider value={link}>
         <Routes>
           <Route
@@ -39,7 +57,7 @@ function App() {
               <>
                 <Header headerLink={headerLink} />
                 <Main onCardClick={handleCardClick} />
-                <Footer />
+                <Footer darkTheme={darkTheme} changeTheme={handleDarkTheme} />
               </>
             }
           ></Route>
@@ -48,8 +66,8 @@ function App() {
             element={
               <>
                 <Header headerLink={headerLink} />
-                <About />
-                <Footer />
+                <About darkTheme={darkTheme} />
+                <Footer darkTheme={darkTheme} changeTheme={handleDarkTheme} />
               </>
             }
           ></Route>

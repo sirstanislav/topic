@@ -7,17 +7,13 @@
   --color-3: #f1b211;
   --color-4: #e83611;
   --color-5: #f9002f;
-  background-color: #f7f9fb;
 }
 
 .App {
-  height: 100vh;
-  width: 95%;
-
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-
-  text-align: center;
+  justify-content: space-between;
   background-color: #f7f9fb;
 
   margin: auto;

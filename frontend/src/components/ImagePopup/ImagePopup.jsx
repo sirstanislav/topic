@@ -21,7 +21,6 @@ export default function ImagePopup({ card, onClose }) {
       onClick={onClose}
     >
       <div className="popup__image">
-        {console.log(card)}
         {card.type === "photo" ? (
           <img className="popup__image-full" src={card.url} alt="" />
         ) : (
@@ -36,7 +35,7 @@ export default function ImagePopup({ card, onClose }) {
           />
         )}
 
-        <a className="card__url" href={url} target="_blank" rel="noreferrer">
+        <a className="popup__url" href={url} target="_blank" rel="noreferrer">
           <h2 className="popup__image-title">
             {card.isOpen ? `@${card[0].username}` : null}
           </h2>

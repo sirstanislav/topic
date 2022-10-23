@@ -16,8 +16,6 @@ export default function Header({ headerLink }) {
     return "";
   }
 
-  console.log("active: ", active);
-
   return (
     <div className="header">
       <div className="header__links">
