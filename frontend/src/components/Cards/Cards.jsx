@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { TweetsApi } from "../../api/tweetsApi";
-import { linkContext } from "../../utils/LinkContext";
+import { hashtagContext } from "../../utils/hashtagContext";
 import Card from "../Card/Card";
 import "./Cards.css";
 
-export default function Cards({ onCardClick }) {
-  const [tweet, setTweet] = useState([]);
-  const headerLink = React.useContext(linkContext);
+export default function Cards({ onCardClick, nextToken }) {
+  const [alltweets, setAllTweets] = useState([]);
+  const headerLink = React.useContext(hashtagContext);
+
+  console.log("nextToken", nextToken)
 
   useEffect(() => {
     TweetsApi.getTweets(headerLink ? headerLink : "#sitnikfriday")
@@ -49,7 +51,7 @@ export default function Cards({ onCardClick }) {
             ...item,
           };
         });
-        setTweet(tweetInfo);
+        setAllTweets(tweetInfo);
       })
       .catch((err) => {
         console.log(err);
@@ -58,7 +60,7 @@ export default function Cards({ onCardClick }) {
 
   return (
     <section className="cards">
-      {tweet.map((card, i) => (
+      {alltweets.map((card, i) => (
         <Card key={i} card={card} onCardClick={onCardClick} index={i} />
       ))}
     </section>

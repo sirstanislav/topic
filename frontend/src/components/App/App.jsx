@@ -6,11 +6,11 @@ import Main from "../Main/Main";
 import About from "../About/About";
 import Footer from "../Footer/Footer";
 import ImagePopup from "../ImagePopup/ImagePopup";
-import { linkContext } from "../../utils/LinkContext";
+import { hashtagContext } from "../../utils/hashtagContext";
 import { useEffect } from "react";
 
 function App() {
-  const [link, setLink] = useState("");
+  const [hashtag, setHashtag] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [darkTheme, setDarkTheme] = useState(false);
   const history = useNavigate();
@@ -25,7 +25,7 @@ function App() {
 
   function headerLink(e) {
     history("/");
-    setLink(e.target.innerHTML);
+    setHashtag(e.target.innerHTML);
   }
 
   function handleCardClick(card) {
@@ -49,7 +49,7 @@ function App() {
       className="App"
       style={{ backgroundColor: darkTheme ? "#212124" : "#f7f9fb" }}
     >
-      <linkContext.Provider value={link}>
+      <hashtagContext.Provider value={hashtag}>
         <Routes>
           <Route
             path="/"
@@ -72,7 +72,7 @@ function App() {
             }
           ></Route>
         </Routes>
-      </linkContext.Provider>
+      </hashtagContext.Provider>
       <ImagePopup card={selectedCard} onClose={handleClosePopup} />
     </div>
   );
