@@ -1,0 +1,16 @@
+.more {
+  display: flex;
+  justify-content: space-around;
+
+  padding: 2vh 0 2vh 0;
+}
+
+.more__button {
+  font-weight: 600;
+  color: #1da1f2;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  margin: 0;
+}

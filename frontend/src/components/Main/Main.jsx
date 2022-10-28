@@ -1,19 +1,13 @@
-import { React, useState } from "react";
+import { React } from "react";
 import "./Main.css";
 import Cards from "../Cards/Cards";
-import More from "../More/More";
+import Pagination from "../Pagination/Pagination";
 
 export default function Main({ onCardClick }) {
-  const [nextToken, setNextToken] = useState(false);
-
-  function loadMore(e) {
-    setNextToken(true);
-  }
-
   return (
     <>
-      <Cards onCardClick={onCardClick} nextToken={nextToken} />
-      <More loadMore={loadMore} />
+      <Cards onCardClick={onCardClick} />
+      <Pagination />
     </>
   );
 }

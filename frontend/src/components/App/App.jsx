@@ -23,26 +23,26 @@ function App() {
     return setDarkTheme(false);
   }, []);
 
-  function headerLink(e) {
+  const headerLink = (e) => {
     history("/");
     setHashtag(e.target.innerHTML);
-  }
+  };
 
-  function handleCardClick(card) {
+  const handleCardClick = (card) => {
     setSelectedCard({
       isOpen: true,
       ...card,
     });
-  }
+  };
 
-  function handleClosePopup() {
+  const handleClosePopup = () => {
     setSelectedCard({ isOpen: false });
-  }
+  };
 
-  function handleDarkTheme() {
+  const handleDarkTheme = () => {
     setDarkTheme(!darkTheme);
     localStorage.setItem("darkTheme", !darkTheme);
-  }
+  };
 
   return (
     <div

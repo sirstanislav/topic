@@ -1,18 +1,24 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import "./Cards.css";
+import React, { useEffect, useState } from "react";
 import { TweetsApi } from "../../api/tweetsApi";
 import { hashtagContext } from "../../utils/hashtagContext";
 import Card from "../Card/Card";
-import "./Cards.css";
+import { useSelector, useDispatch } from "react-redux";
+import { nextPage } from "../../store/buttonStateSlice";
 
-export default function Cards({ onCardClick, nextToken }) {
+export default function Cards({ onCardClick }) {
   const [alltweets, setAllTweets] = useState([]);
   const headerLink = React.useContext(hashtagContext);
-
-  console.log("nextToken", nextToken)
+  const nextPageState = useSelector((state) => state.buttonState.nextPage);
+  const [nextToken, setNextToken] = useState("");
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    TweetsApi.getTweets(headerLink ? headerLink : "#sitnikfriday")
+    TweetsApi.getTweets(
+      headerLink ? headerLink : "#sitnikfriday",
+      nextToken
+
+    )
       .then((res) => {
         console.log("RES", res);
         const mediaAndTweetId = res.data.map((data) => {
@@ -52,11 +58,13 @@ export default function Cards({ onCardClick, nextToken }) {
           };
         });
         setAllTweets(tweetInfo);
+        setNextToken(res.meta.next_token);
+        dispatch(nextPage(false));
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [headerLink]);
+  }, [headerLink, nextPageState]);
 
   return (
     <section className="cards">
