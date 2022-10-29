@@ -7,13 +7,13 @@ const banList = `-from:tooburninx -from:ThomasA70462161 -from:mafusha -from:451D
 -from:veuxalleraparis -from:phan_dyck -from:Alex__19sm`;
 
 module.exports.twitterRequest = async (req, res, next) => {
-  const { headerLink } = req.body;
+  const { headerLink, nextToken } = req.body;
   const response = await client.tweets
     .tweetsRecentSearch({
+      next_token: nextToken,
       query: `${headerLink} has:images -is:retweet ${banList}`,
-      max_results: 50,
-      sort_order: "relevancy",
-      // sort_order: "recency",
+      max_results: 10,
+      sort_order: "recency",
       "tweet.fields": ["id", "attachments", "entities", "text"],
       expansions: [
         "attachments.media_keys",
