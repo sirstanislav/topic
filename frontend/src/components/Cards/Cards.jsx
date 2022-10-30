@@ -2,26 +2,15 @@ import "./Cards.css";
 import Card from "../Card/Card";
 import { TweetsApi } from "../../api/tweetsApi";
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { nextPage } from "../../store/buttonStateSlice";
 import { hashtagContext } from "../../utils/hashtagContext";
 
 export default function Cards({ onCardClick }) {
-  const dispatch = useDispatch();
   const [alltweets, setAllTweets] = useState([]);
-  // const [nextToken, setNextToken] = useState("");
   const headerLink = React.useContext(hashtagContext);
-  const nextPageState = useSelector((state) => state.buttonState.nextPageState);
   const banList = localStorage.getItem("banList");
 
-  console.log(nextPageState);
-
-  const loadTweets = () => {
-    TweetsApi.getTweets(
-      headerLink ? headerLink : "#sitnikfriday",
-      // nextToken,
-      banList
-    )
+  useEffect(() => {
+    TweetsApi.getTweets(headerLink ? headerLink : "#sitnikfriday", banList)
       .then((res) => {
         console.log("RES", res);
         const mediaAndTweetsId = res.data.map((data) => {
@@ -55,7 +44,6 @@ export default function Cards({ onCardClick }) {
             }),
             ...el,
           };
-          // return { ...el, ...res.includes.users[i] };
         });
 
         const tweetInfo = res.includes.media.map((item) => {
@@ -69,16 +57,10 @@ export default function Cards({ onCardClick }) {
           };
         });
         setAllTweets(tweetInfo);
-        // setNextToken(res.meta.next_token);
-        dispatch(nextPage(false));
       })
       .catch((err) => {
         console.log(err);
       });
-  };
-
-  useEffect(() => {
-    loadTweets();
   }, [headerLink, banList]);
 
   return (
