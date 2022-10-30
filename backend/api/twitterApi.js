@@ -1,19 +1,17 @@
-// const { BEARER_TOKEN } = process.env;
-const BEARER_TOKEN =
-  "AAAAAAAAAAAAAAAAAAAAAOGLdQEAAAAAhdsw1PgBHjougLREVHV8vzZan24%3DyPC7cBFhXgJ8AayDu8ZWJhqRodle8IQdQWbuXE7u6xyLn5VQBJ";
+const { BEARER_TOKEN } = process.env;
 const { Client } = require("twitter-api-sdk");
 const client = new Client(BEARER_TOKEN);
-const banList = `-from:tooburninx -from:ThomasA70462161 -from:mafusha -from:451Denis
--from:veuxalleraparis -from:phan_dyck -from:Alex__19sm`;
 
 module.exports.twitterRequest = async (req, res, next) => {
-  const { headerLink, nextToken } = req.body;
+  const { headerLink, banList } = req.body;
+  console.log(banList)
   const response = await client.tweets
     .tweetsRecentSearch({
-      next_token: nextToken,
-      query: `${headerLink} has:images -is:retweet ${banList}`,
-      max_results: 10,
-      sort_order: "recency",
+      // next_token: nextToken,
+      query: `${headerLink} has:images -is:retweet ${banList ? banList : ''}`,
+      max_results: 100,
+      sort_order: "relevancy",
+      // sort_order: "recency",
       "tweet.fields": ["id", "attachments", "entities", "text"],
       expansions: [
         "attachments.media_keys",

@@ -1,6 +1,6 @@
 // Массив доменов, с которых разрешены кросс-доменные запросы
-// const allowedCors = ["https://topicc.netlify.app", "http://topicc.netlify.app"];
-const allowedCors = ["http://localhost:3000"];
+const allowedCors = ["https://topicc.netlify.app", "http://topicc.netlify.app"];
+// const allowedCors = ["http://localhost:3000"];
 
 module.exports = (req, res, next) => {
   const { origin } = req.headers; // Сохраняем источник запроса в переменную origin
