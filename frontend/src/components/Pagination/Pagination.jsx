@@ -1,10 +1,7 @@
 import "./Pagination.css";
 import React from "react";
-import { useDispatch } from "react-redux";
-import { nextPage } from "../../store/buttonStateSlice";
 
 export default function Pagination() {
-  const dispatch = useDispatch();
 
   return (
     <section className="more">

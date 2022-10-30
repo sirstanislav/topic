@@ -9,7 +9,7 @@ import { hashtagContext } from "../../utils/hashtagContext";
 export default function Cards({ onCardClick }) {
   const dispatch = useDispatch();
   const [alltweets, setAllTweets] = useState([]);
-  const [nextToken, setNextToken] = useState("");
+  // const [nextToken, setNextToken] = useState("");
   const headerLink = React.useContext(hashtagContext);
   const nextPageState = useSelector((state) => state.buttonState.nextPageState);
   const banList = localStorage.getItem("banList");
@@ -69,7 +69,7 @@ export default function Cards({ onCardClick }) {
           };
         });
         setAllTweets(tweetInfo);
-        setNextToken(res.meta.next_token);
+        // setNextToken(res.meta.next_token);
         dispatch(nextPage(false));
       })
       .catch((err) => {
