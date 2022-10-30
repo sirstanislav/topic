@@ -1,14 +1,14 @@
-const { BEARER_TOKEN } = process.env;
+const BEARER_TOKEN = process.env.BEARER_TOKEN;
 const { Client } = require("twitter-api-sdk");
 const client = new Client(BEARER_TOKEN);
 
 module.exports.twitterRequest = async (req, res, next) => {
   const { headerLink, banList } = req.body;
-  console.log(banList)
+  console.log(banList);
   const response = await client.tweets
     .tweetsRecentSearch({
       // next_token: nextToken,
-      query: `${headerLink} has:images -is:retweet ${banList ? banList : ''}`,
+      query: `${headerLink} has:images -is:retweet ${banList ? banList : ""}`,
       max_results: 100,
       sort_order: "relevancy",
       // sort_order: "recency",

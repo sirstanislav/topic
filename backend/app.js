@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const helmet = require("helmet");
 const app = express();
-// const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 const bodyParser = require("body-parser");
 const cors = require("./middlewares/cors");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
@@ -18,4 +18,4 @@ app.use("/", require("./routes/tweets"));
 
 app.use(errorLogger); // errorLogger подключают после обработчиков роутов и до обработчиков ошибок
 
-app.listen((PORT = 3003), () => {});
+app.listen((PORT), () => {});
