@@ -48,6 +48,7 @@ export default function ImagePopup({ card, onClose }) {
                   ? oldBanList + `-from:${card[0].username} `
                   : `-from:${card[0].username} `
               );
+              onClose();
             }}
           >
             BAN
