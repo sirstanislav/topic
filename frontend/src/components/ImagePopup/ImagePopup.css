@@ -35,21 +35,37 @@
   border-radius: 5px;
 }
 
+.popup__image-title {
+  display: flex;
+  justify-content: space-between;
+}
+
 .popup__url {
   text-decoration: none;
   text-transform: uppercase;
   text-align: center;
-
   cursor: pointer;
-}
 
-.popup__image-title {
   font-size: 14px;
   line-height: 15px;
   font-weight: 600;
   color: #1da1f2;
 
-  margin: 10px 0 0 0;
+  margin: 0;
+}
+
+.popup__ban {
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+
+  font-size: 14px;
+  line-height: 15px;
+  font-weight: 600;
+  color: #1da1f2;
+
+  margin: 0;
 }
 
 .popup__close {
@@ -93,7 +109,7 @@
     max-width: 90vw;
     max-height: 90vh;
   }
-  
+
   .popup__image-full {
     max-width: 90vw;
     max-height: 90vh;

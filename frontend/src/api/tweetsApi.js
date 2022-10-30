@@ -4,7 +4,7 @@ class Api {
     this._headers = headers;
   }
 
-  getTweets(headerLink, nextToken) {
+  getTweets(headerLink, banList) {
     return fetch(`${this._baseUrl}/`, {
       method: "POST",
       headers: {
@@ -12,15 +12,16 @@ class Api {
       },
       body: JSON.stringify({
         headerLink,
-        nextToken
+        // nextToken,
+        banList
       }),
     }).then((res) => (res.ok ? res.json() : Promise.reject(res.status)));
   }
 }
 
 export const TweetsApi = new Api({
-  // baseUrl: "https://topicc-api.herokuapp.com",
-  baseUrl: "http://localhost:3003",
+  baseUrl: "https://topicc-api.herokuapp.com",
+  // baseUrl: "http://localhost:3003",
   headers: {
     "Content-Type": "application/json",
   },

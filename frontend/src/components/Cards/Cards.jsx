@@ -1,27 +1,30 @@
 import "./Cards.css";
-import React, { useEffect, useState } from "react";
-import { TweetsApi } from "../../api/tweetsApi";
-import { hashtagContext } from "../../utils/hashtagContext";
 import Card from "../Card/Card";
+import { TweetsApi } from "../../api/tweetsApi";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { nextPage } from "../../store/buttonStateSlice";
+import { hashtagContext } from "../../utils/hashtagContext";
 
 export default function Cards({ onCardClick }) {
-  const [alltweets, setAllTweets] = useState([]);
-  const headerLink = React.useContext(hashtagContext);
-  const nextPageState = useSelector((state) => state.buttonState.nextPage);
-  const [nextToken, setNextToken] = useState("");
   const dispatch = useDispatch();
+  const [alltweets, setAllTweets] = useState([]);
+  const [nextToken, setNextToken] = useState("");
+  const headerLink = React.useContext(hashtagContext);
+  const nextPageState = useSelector((state) => state.buttonState.nextPageState);
+  const banList = localStorage.getItem("banList");
 
-  useEffect(() => {
+  console.log(nextPageState);
+
+  const loadTweets = () => {
     TweetsApi.getTweets(
       headerLink ? headerLink : "#sitnikfriday",
-      nextToken
-
+      // nextToken,
+      banList
     )
       .then((res) => {
         console.log("RES", res);
-        const mediaAndTweetId = res.data.map((data) => {
+        const mediaAndTweetsId = res.data.map((data) => {
           const mediaKeys = {};
           if (data.attachments) {
             // very rare the attachments don't coming from API
@@ -31,6 +34,7 @@ export default function Cards({ onCardClick }) {
             return {
               ...mediaKeys,
               tweetId: data.id,
+              authorId: data.author_id,
             };
           } else {
             for (let i = 0; i < data.entities.urls.length; i++) {
@@ -39,12 +43,19 @@ export default function Cards({ onCardClick }) {
             return {
               ...mediaKeys,
               tweetId: data.id,
+              authorId: data.author_id,
             };
           }
         });
 
-        const userName = mediaAndTweetId.map((el, i) => {
-          return { ...el, ...res.includes.users[i] };
+        const userName = mediaAndTweetsId.map((el, i) => {
+          return {
+            ...res.includes.users.find((item) => {
+              return item.id === el.authorId ? item.username : null;
+            }),
+            ...el,
+          };
+          // return { ...el, ...res.includes.users[i] };
         });
 
         const tweetInfo = res.includes.media.map((item) => {
@@ -64,7 +75,11 @@ export default function Cards({ onCardClick }) {
       .catch((err) => {
         console.log(err);
       });
-  }, [headerLink, nextPageState]);
+  };
+
+  useEffect(() => {
+    loadTweets();
+  }, [headerLink, banList]);
 
   return (
     <section className="cards">

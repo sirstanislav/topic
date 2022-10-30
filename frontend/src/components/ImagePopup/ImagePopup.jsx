@@ -1,8 +1,6 @@
 import "./ImagePopup.css";
-
 import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export default function ImagePopup({ card, onClose }) {
   const [userName, setUserName] = useState("");
@@ -16,13 +14,15 @@ export default function ImagePopup({ card, onClose }) {
   }/status/${userName.isOpen ? userName[0].tweetId : null}`;
 
   return (
-    <section
-      className={`popup ${card.isOpen && "popup_enable"}`}
-      onClick={onClose}
-    >
+    <section className={`popup ${card.isOpen && "popup_enable"}`}>
       <div className="popup__image">
         {card.type === "photo" ? (
-          <img className="popup__image-full" src={card.url} alt="" />
+          <img
+            className="popup__image-full"
+            onClick={onClose}
+            src={card.url}
+            alt=""
+          />
         ) : (
           <video
             controls
@@ -34,12 +34,25 @@ export default function ImagePopup({ card, onClose }) {
             alt=""
           />
         )}
-
-        <a className="popup__url" href={url} target="_blank" rel="noreferrer">
-          <h2 className="popup__image-title">
+        <div className="popup__image-title">
+          <a className="popup__url" href={url} target="_blank" rel="noreferrer">
             {card.isOpen ? `@${card[0].username}` : null}
-          </h2>
-        </a>
+          </a>
+          <div
+            className="popup__ban"
+            onClick={() => {
+              const oldBanList = localStorage.getItem("banList");
+              localStorage.setItem(
+                "banList",
+                oldBanList
+                  ? oldBanList + `-from:${card[0].username} `
+                  : `-from:${card[0].username} `
+              );
+            }}
+          >
+            BAN
+          </div>
+        </div>
         <button
           className="popup__close"
           onClick={onClose}
