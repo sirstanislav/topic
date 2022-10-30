@@ -1,6 +1,7 @@
+import "./Header.css";
 import React from "react";
 import { useState } from "react";
-import "./Header.css";
+import SearchForm from "../SearchForm/SearchForm";
 
 export default function Header({ headerLink }) {
   const [active, setActive] = useState(1);
@@ -18,20 +19,8 @@ export default function Header({ headerLink }) {
 
   return (
     <div className="header">
+      {<SearchForm />}
       <div className="header__links">
-        <div
-          className={"header__link"}
-          onClick={(e) => {
-            handleLink(e);
-            setActive(0);
-          }}
-        >
-          <p className="header__link-title">#нюдсочетверг</p>
-          <div
-            className="header__link-subline"
-            style={{ display: displayStyle(0) }}
-          ></div>
-        </div>
         <div
           className={"header__link"}
           onClick={(e) => {
@@ -56,6 +45,19 @@ export default function Header({ headerLink }) {
           <div
             className="header__link-subline"
             style={{ display: displayStyle(2) }}
+          ></div>
+        </div>
+        <div
+          className={"header__link"}
+          onClick={(e) => {
+            handleLink(e);
+            setActive(0);
+          }}
+        >
+          <p className="header__link-title">#нюдсочетверг</p>
+          <div
+            className="header__link-subline"
+            style={{ display: displayStyle(0) }}
           ></div>
         </div>
         <div
