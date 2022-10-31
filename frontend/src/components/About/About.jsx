@@ -1,11 +1,14 @@
 import "./About.css";
 import React from "react";
+import { useSelector } from "react-redux";
 
-export default function About({ darkTheme }) {
+export default function About() {
+  const { darkThemeState } = useSelector((state) => state.themeState);
+
   return (
     <section className="about">
       <div className="about__logo"></div>
-      <p className={`about__info ${darkTheme && "about__info_dark"}`}>
+      <p className={`about__info ${darkThemeState && "about__info_dark"}`}>
         Topic был сделан, чтоб собрать вместе популярные хештеги. А так же для
         популяризаций нюдсов. <br></br> <br></br>{" "}
         <a

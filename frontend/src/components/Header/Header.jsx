@@ -13,8 +13,9 @@ export default function Header({ headerLink }) {
   function displayStyle(position) {
     if (active === position) {
       return "block";
+    } else {
+      return "";
     }
-    return "";
   }
 
   return (

@@ -2,7 +2,6 @@ import "./Pagination.css";
 import React from "react";
 
 export default function Pagination() {
-
   return (
     <section className="more">
       <div

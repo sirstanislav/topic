@@ -1,26 +1,29 @@
 import "./App.css";
-import { React, useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import Header from "../Header/Header";
 import Main from "../Main/Main";
 import About from "../About/About";
 import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
 import ImagePopup from "../ImagePopup/ImagePopup";
+import { React, useState, useEffect } from "react";
+import { darkTheme } from "../../store/darkThemeSlice";
+import { useSelector, useDispatch } from "react-redux";
 import { hashtagContext } from "../../utils/hashtagContext";
-import { useEffect } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 function App() {
+  const history = useNavigate();
+  const dispatch = useDispatch();
   const [hashtag, setHashtag] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  const [darkTheme, setDarkTheme] = useState(false);
-  const history = useNavigate();
+  const { darkThemeState } = useSelector((state) => state.themeState);
 
   useEffect(() => {
     const local = localStorage.getItem("darkTheme");
     if (local === "true") {
-      return setDarkTheme(true);
+      dispatch(darkTheme(true));
+    } else {
+      dispatch(darkTheme(false));
     }
-    return setDarkTheme(false);
   }, []);
 
   const headerLink = (e) => {
@@ -39,15 +42,10 @@ function App() {
     setSelectedCard({ isOpen: false });
   };
 
-  const handleDarkTheme = () => {
-    setDarkTheme(!darkTheme);
-    localStorage.setItem("darkTheme", !darkTheme);
-  };
-
   return (
     <div
       className="App"
-      style={{ backgroundColor: darkTheme ? "#212124" : "#f7f9fb" }}
+      style={{ backgroundColor: darkThemeState ? "#212124" : "#f7f9fb" }}
     >
       <hashtagContext.Provider value={hashtag}>
         <Routes>
@@ -57,7 +55,7 @@ function App() {
               <>
                 <Header headerLink={headerLink} />
                 <Main onCardClick={handleCardClick} />
-                <Footer darkTheme={darkTheme} changeTheme={handleDarkTheme} />
+                <Footer />
               </>
             }
           ></Route>
@@ -66,8 +64,8 @@ function App() {
             element={
               <>
                 <Header headerLink={headerLink} />
-                <About darkTheme={darkTheme} />
-                <Footer darkTheme={darkTheme} changeTheme={handleDarkTheme} />
+                <About />
+                <Footer />
               </>
             }
           ></Route>
