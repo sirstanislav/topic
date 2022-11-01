@@ -3,14 +3,25 @@ import Card from "../Card/Card";
 import { TweetsApi } from "../../api/tweetsApi";
 import React, { useEffect, useState } from "react";
 import { hashtagContext } from "../../utils/hashtagContext";
+import { useSelector, useDispatch } from "react-redux";
+import { searchForm } from "../../store/searchFormSlice";
 
 export default function Cards({ onCardClick }) {
   const [alltweets, setAllTweets] = useState([]);
   const headerLink = React.useContext(hashtagContext);
   const banList = localStorage.getItem("banList");
+  const { searchFormValue } = useSelector((state) => state.searchValue);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    TweetsApi.getTweets(headerLink ? headerLink : "#sitnikfriday", banList)
+    TweetsApi.getTweets(
+      searchFormValue
+        ? searchFormValue
+        : headerLink
+        ? headerLink
+        : "#sitnikfriday",
+      banList
+    )
       .then((res) => {
         console.log("RES", res);
         const mediaAndTweetsId = res.data.map((data) => {
@@ -61,7 +72,10 @@ export default function Cards({ onCardClick }) {
       .catch((err) => {
         console.log(err);
       });
-  }, [headerLink, banList]);
+    // dispatch(searchForm(""));
+  }, [headerLink, banList, searchFormValue]);
+
+  console.log("searchFormValue", searchFormValue);
 
   return (
     <section className="cards">

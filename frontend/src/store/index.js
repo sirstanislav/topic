@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import nextPage from "./buttonStateSlice";
 import darkTheme from "./darkThemeSlice";
+import searchForm from "./searchFormSlice";
 
 export default configureStore({
   reducer: {
-    buttonState: nextPage,
     themeState: darkTheme,
+    searchValue: searchForm,
   },
 });
