@@ -4,7 +4,7 @@ const client = new Client(BEARER_TOKEN);
 
 module.exports.twitterRequest = async (req, res, next) => {
   const { headerLink, banList } = req.body;
-  console.log(banList);
+  console.log("headerLink", headerLink)
   const response = await client.tweets
     .tweetsRecentSearch({
       // next_token: nextToken,
