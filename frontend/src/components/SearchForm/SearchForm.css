@@ -6,7 +6,7 @@
   outline: none;
   background-color: rgb(247, 249, 251);
 
-  margin: 0 0 20px 0;
+  margin: 0;
 }
 
 .searchform_dark-theme {
@@ -54,5 +54,22 @@
   background-position: center;
   background-color: transparent;
 
+  margin: 0;
+}
+
+.searchform__error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+
+  height: 5vh;
+  text-align: center;
+
+  margin: 0;
+}
+
+.searchform__error_dark-theme {
+  color: rgb(235, 212, 50);
   margin: 0;
 }

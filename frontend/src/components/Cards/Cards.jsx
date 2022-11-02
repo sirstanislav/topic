@@ -1,27 +1,18 @@
 import "./Cards.css";
 import Card from "../Card/Card";
+import React, { useEffect } from "react";
 import { TweetsApi } from "../../api/tweetsApi";
-import React, { useEffect, useState } from "react";
-import { hashtagContext } from "../../utils/hashtagContext";
+import { tweets } from "../../store/tweetsSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { searchForm } from "../../store/searchFormSlice";
 
 export default function Cards({ onCardClick }) {
-  const [alltweets, setAllTweets] = useState([]);
-  const headerLink = React.useContext(hashtagContext);
-  const banList = localStorage.getItem("banList");
-  const { searchFormValue } = useSelector((state) => state.searchValue);
   const dispatch = useDispatch();
+  const banList = localStorage.getItem("banList");
+  const { tweetsState } = useSelector((state) => state.tweetsState);
+  const { hashtagValue } = useSelector((state) => state.hashtagValue);
 
   useEffect(() => {
-    TweetsApi.getTweets(
-      searchFormValue
-        ? searchFormValue
-        : headerLink
-        ? headerLink
-        : "#sitnikfriday",
-      banList
-    )
+    TweetsApi.getTweets(hashtagValue ? hashtagValue : "#sitnikfriday", banList)
       .then((res) => {
         console.log("RES", res);
         const mediaAndTweetsId = res.data.map((data) => {
@@ -67,19 +58,16 @@ export default function Cards({ onCardClick }) {
             ...item,
           };
         });
-        setAllTweets(tweetInfo);
+        dispatch(tweets(tweetInfo));
       })
       .catch((err) => {
         console.log(err);
       });
-    // dispatch(searchForm(""));
-  }, [headerLink, banList, searchFormValue]);
-
-  console.log("searchFormValue", searchFormValue);
+  }, [banList]);
 
   return (
     <section className="cards">
-      {alltweets.map((card, i) => (
+      {tweetsState.map((card, i) => (
         <Card key={i} card={card} onCardClick={onCardClick} index={i} />
       ))}
     </section>
