@@ -63,7 +63,7 @@ export default function Cards({ onCardClick }) {
       .catch((err) => {
         console.log(err);
       });
-  }, [banList]);
+  }, [banList, dispatch]);
 
   return (
     <section className="cards">

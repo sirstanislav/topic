@@ -21,7 +21,7 @@ function App() {
     } else {
       dispatch(darkTheme(false));
     }
-  }, []);
+  }, [dispatch]);
 
   const handleCardClick = (card) => {
     setSelectedCard({
