@@ -7,12 +7,14 @@ import { TweetsApi } from "../../api/tweetsApi";
 import { tweets } from "../../store/tweetsSlice";
 import { hashtag } from "../../store/hashtagSlice";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const dispatch = useDispatch();
   const [active, setActive] = useState(1);
   const banList = localStorage.getItem("banList");
   const searchForm = useSelector((state) => state.searchValue);
+  const navigate = useNavigate()
 
   function displayStyle(position) {
     if (active === position) {
@@ -90,6 +92,7 @@ export default function Header() {
             setActive(1);
             callApi(e.target.innerHTML);
             dispatch(hashtag(e.target.innerHTML));
+            navigate('/')
           }}
         >
           <p className="header__link-title">#sitnikfriday</p>
@@ -104,6 +107,7 @@ export default function Header() {
             setActive(2);
             callApi(e.target.innerHTML);
             dispatch(hashtag(e.target.innerHTML));
+            navigate('/')
           }}
         >
           <p className="header__link-title">#sexymonday</p>
@@ -118,6 +122,7 @@ export default function Header() {
             setActive(3);
             callApi(e.target.innerHTML);
             dispatch(hashtag(e.target.innerHTML));
+            navigate('/')
           }}
         >
           <p className="header__link-title">#нюдсочетверг</p>
@@ -132,6 +137,7 @@ export default function Header() {
             setActive(4);
             callApi(e.target.innerHTML);
             dispatch(hashtag(e.target.innerHTML));
+            navigate('/')
           }}
         >
           <p className="header__link-title">#нюдсыкаждыйдень</p>
