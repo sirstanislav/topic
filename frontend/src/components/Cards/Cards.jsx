@@ -63,6 +63,7 @@ export default function Cards({ onCardClick }) {
       .catch((err) => {
         console.log(err);
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [banList, dispatch]);
 
   return (
