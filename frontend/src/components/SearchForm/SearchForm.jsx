@@ -1,6 +1,7 @@
 import "./SearchForm.css";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { TweetsApi } from "../../api/tweetsApi";
 import { tweets } from "../../store/tweetsSlice";
 import { useSelector, useDispatch } from "react-redux";
@@ -8,6 +9,7 @@ import { searchForm } from "../../store/searchFormSlice";
 
 export default function SearchForm() {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const { darkThemeState } = useSelector((state) => state.themeState);
 
   const {
@@ -76,8 +78,8 @@ export default function SearchForm() {
       });
 
     dispatch(searchForm(inputSearchForm));
-    // dispatch(hashtag(''));
     setValue("inputSearchForm", "");
+    navigate("/")
   };
 
   return (
