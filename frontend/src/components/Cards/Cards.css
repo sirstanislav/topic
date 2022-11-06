@@ -6,3 +6,14 @@
 
   margin: 0 auto;
 }
+
+@media screen and (max-width: 500px) {
+  .cards {
+    width: 95vw;
+    columns: 100px;
+    column-gap: 0px;
+    row-gap: 100px;
+
+    margin: 0 auto;
+  }
+}
