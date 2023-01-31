@@ -92,7 +92,7 @@ export default function Header() {
             setActive(1);
             callApi(e.target.innerHTML);
             dispatch(hashtag(e.target.innerHTML));
-            navigate('/')
+            navigate("/");
           }}
         >
           <p className="header__link-title">#35mm</p>
@@ -107,7 +107,7 @@ export default function Header() {
             setActive(2);
             callApi(e.target.innerHTML);
             dispatch(hashtag(e.target.innerHTML));
-            navigate('/')
+            navigate("/");
           }}
         >
           <p className="header__link-title">#blackandWhite</p>
@@ -122,7 +122,7 @@ export default function Header() {
             setActive(3);
             callApi(e.target.innerHTML);
             dispatch(hashtag(e.target.innerHTML));
-            navigate('/')
+            navigate("/");
           }}
         >
           <p className="header__link-title">#composition</p>
@@ -137,7 +137,7 @@ export default function Header() {
             setActive(4);
             callApi(e.target.innerHTML);
             dispatch(hashtag(e.target.innerHTML));
-            navigate('/')
+            navigate("/");
           }}
         >
           <p className="header__link-title">#landscape</p>
