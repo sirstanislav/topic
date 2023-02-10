@@ -12,7 +12,7 @@ export default function Cards({ onCardClick }) {
   const { hashtagValue } = useSelector((state) => state.hashtagValue);
 
   useEffect(() => {
-    TweetsApi.getTweets(hashtagValue ? hashtagValue : "#35mm", banList)
+    TweetsApi.getTweets(hashtagValue ? hashtagValue : "#sitnikfriday", banList)
       .then((res) => {
         console.log("RES", res);
         const mediaAndTweetsId = res.data.map((data) => {

@@ -95,7 +95,7 @@ export default function Header() {
             navigate("/");
           }}
         >
-          <p className="header__link-title">#35mm</p>
+          <p className="header__link-title">#sitnikfriday</p>
           <div
             className="header__link-subline"
             style={{ display: displayStyle(1) }}
@@ -110,7 +110,7 @@ export default function Header() {
             navigate("/");
           }}
         >
-          <p className="header__link-title">#blackandWhite</p>
+          <p className="header__link-title">#sexymonday</p>
           <div
             className="header__link-subline"
             style={{ display: displayStyle(2) }}
@@ -125,7 +125,7 @@ export default function Header() {
             navigate("/");
           }}
         >
-          <p className="header__link-title">#composition</p>
+          <p className="header__link-title">#нюдсочетверг</p>
           <div
             className="header__link-subline"
             style={{ display: displayStyle(3) }}
@@ -140,7 +140,7 @@ export default function Header() {
             navigate("/");
           }}
         >
-          <p className="header__link-title">#landscape</p>
+          <p className="header__link-title">#нюдсыкаждыйдень</p>
           <div
             className="header__link-subline"
             style={{ display: displayStyle(4) }}
