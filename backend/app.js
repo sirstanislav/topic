@@ -1,11 +1,11 @@
 require("dotenv").config();
-const app = express();
 const helmet = require("helmet");
 const express = require("express");
 const PORT = process.env.PORT || 8080;
 const bodyParser = require("body-parser");
 const cors = require("./middlewares/cors");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
+const app = express();
 
 app.use(helmet()); // использование Helmet
 app.disable("x-powered-by"); // отключить заголовок X-Powered-By
