@@ -31,7 +31,6 @@ export default function Header() {
   const callApi = (hashtag) => {
     TweetsApi.getTweets(hashtag, banList)
       .then((res) => {
-        console.log("RES", res);
         const mediaAndTweetsId = res.data.map((data) => {
           const mediaKeys = {};
           if (data.attachments) {

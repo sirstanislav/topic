@@ -4,12 +4,10 @@ const client = new Client(BEARER_TOKEN);
 
 module.exports.twitterRequest = async (req, res, next) => {
   const { headerLink, banList } = req.body;
-  console.log("headerLink", headerLink)
   const response = await client.tweets
     .tweetsRecentSearch({
-      // next_token: nextToken,
       query: `${headerLink} has:images -is:retweet ${banList ? banList : ""}`,
-      max_results: 100,
+      max_results: 30,
       sort_order: "relevancy",
       // sort_order: "recency",
       "tweet.fields": ["id", "attachments", "entities", "text"],

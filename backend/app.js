@@ -1,7 +1,7 @@
 require("dotenv").config();
-const express = require("express");
-const helmet = require("helmet");
 const app = express();
+const helmet = require("helmet");
+const express = require("express");
 const PORT = process.env.PORT || 8080;
 const bodyParser = require("body-parser");
 const cors = require("./middlewares/cors");
@@ -18,4 +18,4 @@ app.use("/", require("./routes/tweets"));
 
 app.use(errorLogger); // errorLogger подключают после обработчиков роутов и до обработчиков ошибок
 
-app.listen((PORT), () => {});
+app.listen(PORT, () => {});

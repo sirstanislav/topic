@@ -27,7 +27,6 @@ export default function SearchForm() {
   const onSubmit = () => {
     TweetsApi.getTweets(inputSearchForm)
       .then((res) => {
-        console.log("RES", res);
         const mediaAndTweetsId = res.data.map((data) => {
           const mediaKeys = {};
           if (data.attachments) {
